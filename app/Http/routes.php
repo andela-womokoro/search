@@ -16,3 +16,5 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/product/add', 'ProductsController@newProductForm');
 Route::post('/product/add', 'ProductsController@newProduct');
+Route::get('/search', 'ProductsController@searchProductForm');
+Route::post('/search', 'ProductsController@search');

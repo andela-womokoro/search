@@ -13,6 +13,9 @@ class SearchTest extends TestCase
      */
     public function testExample()
     {
-        $this->assertTrue(true);
+        $this->visit('/search')
+        	->type('product 1', 'phrase')
+         	->click('Search')
+         	->seePageIs('/search');
     }
 }

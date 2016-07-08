@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Landing page route
+Route::get('/', 'PagesController@index');
+
+Route::get('/product/add', 'ProductsController@newProductForm');
+Route::post('/product/add', 'ProductsController@newProduct');

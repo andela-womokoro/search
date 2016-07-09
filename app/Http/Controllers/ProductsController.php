@@ -49,7 +49,11 @@ class ProductsController extends Controller
    {
         $searchPhrase = $request->input('phrase');
         $products = Product::where('name', 'ilike', "%$searchPhrase%")->paginate(4);;
-        //dd($products);
+
+        //if no result, try searching for category instead...
+        if ($products->count() <= 0) {
+            $products = Product::where('category', 'ilike', "%$searchPhrase%")->paginate(4);;
+        }
 
         return view('product_search', ['products'=>$products]);
    }

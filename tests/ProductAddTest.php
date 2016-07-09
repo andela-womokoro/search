@@ -20,7 +20,5 @@ class ProductAddTest extends TestCase
 	         ->type('500.35', 'price')
 	         ->press('Add Product')
 	         ->see('Product successfully added');
-
-        
     }
 }

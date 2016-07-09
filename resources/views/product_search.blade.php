@@ -29,6 +29,6 @@
         </table>
 
         {!! $products->render() !!}
-        
+
     @endif
 @endsection

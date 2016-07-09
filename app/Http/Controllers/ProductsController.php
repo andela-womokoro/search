@@ -65,7 +65,7 @@ class ProductsController extends Controller
                 return view('product_search', ['alert'=>$alert]);
             } else {
                 $alert = "Showing search result for \"$searchPhrase\"...";
-                return view('product_search', ['alert'=>$alert, 'products'=>$products]);
+                return view('product_search', ['alert'=>$alert, 'products'=>$products, 'phrase'=>$searchPhrase]);
             }
         }
     }

@@ -48,13 +48,25 @@ class ProductsController extends Controller
    public function search(Request $request)
    {
         $searchPhrase = $request->input('phrase');
-        $products = Product::where('name', 'ilike', "%$searchPhrase%")->paginate(4);;
+        $alert = "";
 
-        //if no result, try searching for category instead...
-        if ($products->count() <= 0) {
-            $products = Product::where('category', 'ilike', "%$searchPhrase%")->paginate(4);;
+        if(is_null($searchPhrase) || $searchPhrase == "") {
+            $alert = "No search phrase was entererd. Please try again.";
+            return view('product_search', ['alert'=>$alert]);
+        } else {
+            $products = Product::where('name', 'ilike', "%$searchPhrase%")->paginate(4);
+            if ($products->count() == 0) {
+                //no result. search again for category instead...
+                $products = Product::where('category', 'ilike', "%$searchPhrase%")->paginate(4);
+            }
+
+            if ($products->count() == 0) {
+                $alert = "No result found for \"$searchPhrase\"...";
+                return view('product_search', ['alert'=>$alert]);
+            } else {
+                $alert = "Showing search result for \"$searchPhrase\"...";
+                return view('product_search', ['alert'=>$alert, 'products'=>$products]);
+            }
         }
-
-        return view('product_search', ['products'=>$products]);
-   }
+    }
 }

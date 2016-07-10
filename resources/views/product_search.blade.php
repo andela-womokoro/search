@@ -31,4 +31,5 @@
         {!! $products->appends(['phrase'=>$phrase])->render() !!}
 
     @endif
+    <p><i>Tip: to view all products in the database enter only a single space into the search form. Condsider this a useful bug!</i></p>
 @endsection

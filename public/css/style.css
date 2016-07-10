@@ -26,6 +26,10 @@ body {
     font-size: 96px;
 }
 
+.my-content {
+    text-align: left;
+}
+
 a{
     text-decoration: none;
 }

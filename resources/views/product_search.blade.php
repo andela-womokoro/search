@@ -28,7 +28,7 @@
            @endforeach
         </table>
 
-        <p>{!! $products->appends(['phrase'=>$phrase])->render() !!}</p>
+        {!! $products->appends(['phrase'=>$phrase])->render() !!}
 
     @endif
 @endsection
